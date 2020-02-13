@@ -1,3 +1,6 @@
+#---------------------------------- STARTUP COMMANDS -------------------------#
+exec --no-startup-id feh --no-fehbg --bg-scale ~/Documents/Mandelbrot_bg.jpg &
+exec --no-startup-id picom --config ~/.dotfiles/picom.conf &
 
 set $mod Mod4
 
