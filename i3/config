@@ -1,7 +1,7 @@
 #---------------------------------- STARTUP COMMANDS -------------------------#
-exec --no-startup-id feh --no-fehbg --bg-scale ~/Documents/Mandelbrot_bg.jpg &
+exec --no-startup-id feh --no-fehbg --bg-scale ~/.dotfiles/mbrot_beach_raw.jpg &
 exec --no-startup-id picom --config ~/.dotfiles/picom.conf &
-
+exec --no-startup-id unclutter &
 set $mod Mod4
 
 font pango:monospace 8
@@ -28,6 +28,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 bindsym $mod+Return exec terminator
+bindsym $mod+i exec firefox
+bindsym $mod+Shift+i exec firefex --private-window https://manjaro.org/
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 
@@ -124,10 +126,11 @@ default_border pixel 15
 gaps inner 15
 
 # border colors
-client.focused #000000 #000000 #000000 #F7DEFF #CD81FD
-client.focused_inactive #000000 #000000 #000000 #3024AC #44B2D5
-client.unfocused #000000 #000000 #000000 #3024AC #6408A7
-client.urgent #000000 #000000 #000000 #B10000 #CB3AAB
+#columns:                 border, backgr, text,  indicat, childborder
+client.focused            #000000 #000000 #000000 #FEFEBE #C1E5D7
+client.focused_inactive   #000000 #000000 #000000 #F9BB47 #66999B
+client.unfocused          #000000 #000000 #000000 #B3460E #111B23
+client.urgent             #000000 #000000 #000000 #FF0000 #FF0000
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
