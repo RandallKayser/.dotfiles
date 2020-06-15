@@ -4,11 +4,31 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-inoremap jk <Esc>
+call plug#begin('~/.vim/plugged')
+
+Plug 'lervag/vimtex'
+
+call plug#end()
+
+
+filetype plugin indent on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+
+"------------------------------ TABS ------------------------------------------
 
 set tabstop=3
 set shiftwidth=3
 set expandtab
 set number
+
+"--------------------- COLORSCHEME + AESTHETICS ------------------------------
+
 syntax enable
 :colorscheme darkluma
+
+"----------------------------- REMAPS ----------------------------------------
+
+inoremap jk <Esc>
+
+set clipboard=unnamedplus

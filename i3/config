@@ -24,13 +24,24 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Use xbacklight to adjust screen and keyboard brightness
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec "bl_level=$(xbacklight -get); \
+               if [ $bl_level -gt 5 ]; then xbacklight -dec 5; \
+               elif [ $bl_level -gt 1 ]; then xbacklight -set 1; \
+               else xbacklight -set 0 ; fi"
+bindsym XF86Display exec "kbd_lvl=$(xbacklight -ctrl tpacpi::kbd_backlight -get); \
+                           if [ $kbd_lvl -lt 100 ]; then xbacklight -ctrl tpacpi::kbd_backlight -inc 50; \
+                           else xbacklight -ctrl tpacpi::kbd_backlight -set 0; fi"
+
+# use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 bindsym $mod+Return exec terminator
 bindsym $mod+i exec firefox
-bindsym $mod+Shift+i exec firefex --private-window https://manjaro.org/
-bindsym $mod+Shift+q kill
+bindsym $mod+shift+i exec firefex --private-window https://manjaro.org/
+bindsym $mod+shift+q kill
 bindsym $mod+d exec dmenu_run
 
 #move focus
@@ -38,20 +49,20 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
 
 #move windows
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+shift+j move left
+bindsym $mod+shift+k move down
+bindsym $mod+shift+l move up
+bindsym $mod+shift+semicolon move right
+bindsym $mod+shift+left move left
+bindsym $mod+shift+down move down
+bindsym $mod+shift+up move up
+bindsym $mod+shift+right move right
 
 # splits
 bindsym $mod+h split h
@@ -66,7 +77,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -79,10 +90,10 @@ bindsym $mod+a focus parent
 
 
 
-#---------------------------- WORKSPACES -------------------------------------#
+#---------------------------- workspaces -------------------------------------#
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# define names for default workspaces for which we configure key bindings later on.
+# we use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
