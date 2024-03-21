@@ -18,17 +18,20 @@ let g:tex_flavor = "latex"
 "------------------------------ TABS ------------------------------------------
 
 set tabstop=3
-set shiftwidth=3
+set softtabstop=0
 set expandtab
+set shiftwidth=3
+set smarttab
 set number
-
+set autoindent
 "--------------------- COLORSCHEME + AESTHETICS ------------------------------
 
 syntax enable
-:colorscheme darkluma
+:colorscheme sublimemonokai
 
 "----------------------------- REMAPS ----------------------------------------
 
 inoremap jk <Esc>
-
+vnoremap jk <Esc>
+nnoremap tw :w <bar> :execute "silent !texrefresh %" <bar> redraw!
 set clipboard=unnamedplus
