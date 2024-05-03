@@ -3,8 +3,8 @@
 #
 
 # BASHFIRMATIONS:
-linenum=$(wc -l < ~/.bashfirmations.txt)
-line=$(expr $RANDOM % $linenum + 1)
+
+linenum=$(wc -l < ~/.bashfirmations.txt) line=$(expr $RANDOM % $linenum + 1)
 echo ">>>"
 echo $(sed -n ${line}p ~/.bashfirmations.txt)
 echo ">>>"
