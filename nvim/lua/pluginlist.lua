@@ -11,7 +11,19 @@ return {
       "ellisonleao/gruvbox.nvim",
       priority = 1000,
       config = function()
-         vim.cmd("colorscheme gruvbox")
+		   require("gruvbox").setup({
+			   terminal_colors = true,
+			   italic = {
+			      strings = false,
+			      emphasis = false,
+			      comments = false,
+			      operators = false,
+			      folds = true,
+			   },
+			   invert_selection = true,
+			   contrast = "hard",
+			})
+			vim.cmd("colorscheme gruvbox")
       end
    },
 
@@ -28,6 +40,11 @@ return {
       end,
    },
 
+   {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+   }
 
 
 }
