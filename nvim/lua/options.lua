@@ -1,3 +1,6 @@
+vim.opt.mouse = ""
+
+
 --[[require("gruvbox").setup({
    terminal_colors = true,
    italic = {
